@@ -2,6 +2,40 @@
 
 Everything runs on your own Mac. No accounts, no API keys, no git, no Homebrew.
 
+Two ways to use it:
+- **Hands-free mode (recommended)** — no exporting anything; leave the laptop on
+  and voice notes get transcribed automatically as they arrive. See the next section.
+- **Export mode** — manually export a chat and transcribe it once. See Step 1 below.
+
+## Hands-free mode — no exporting, runs overnight
+
+One-time setup:
+1. Install **WhatsApp Desktop** on the Mac (Mac App Store, or whatsapp.com/download)
+   and sign in: on your phone, WhatsApp → Settings → **Linked Devices** → Link a Device.
+2. Install `uv` (same as Step 2 below) and save `watch_and_transcribe.py` somewhere
+   easy, e.g. Downloads.
+
+Then whenever you want it running (e.g. before bed), paste this in Terminal:
+
+```
+caffeinate -i uv run --with faster-whisper ~/Downloads/watch_and_transcribe.py
+```
+
+- It finds WhatsApp Desktop's media folder by itself, checks every 5 minutes for
+  new voice notes, and transcribes each one. `caffeinate` keeps the Mac awake.
+- Transcripts appear in **~/Documents/WhatsAppTranscripts**: one `.txt` per voice
+  note plus a combined `transcripts-<date>.txt` per day.
+- It remembers what it already did — it never re-transcribes old notes.
+- Stop it any time with **Ctrl+C** in that Terminal window.
+- Portuguese notes? Add ` --lang pt` at the end.
+
+Notes: WhatsApp Desktop must stay open and signed in (that's what downloads the
+voice notes to the computer). It transcribes voice notes from **all** chats
+WhatsApp downloads, and the very first run may process the whole backlog —
+after that, only new notes.
+
+## Export mode — one chat, one time
+
 ## Step 1 — Get the audio files out of WhatsApp
 On your **phone**, open the group chat:
 - iPhone: group name → **Export Chat** → **Attach Media**
