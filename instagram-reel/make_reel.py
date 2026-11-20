@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""Cut four portrait cat clips into a 9:16 Instagram Reel.
+"""Cut four portrait clips of Amigo into a 9:16 Instagram Reel.
+
+Concept: Amigo hates it whenever another cat visits the balcony.
 
 Effects: smooth push-in zooms, a punch-in zoom with camera shake, speed ramps
 (blurred fast-forward into 60fps slow-mo), zoom-blur/flash and whip
@@ -46,9 +48,9 @@ EMOJI_FONT = "/usr/share/fonts/truetype/noto/NotoColorEmoji.ttf"
 SHOTS = [
     dict(  # hook: pawing at the glass
         clip="0912a",
-        pieces=[(0.0, 1.9, 1.0)],
+        pieces=[(0.0, 1.9, 0.8)],
         keys=[(0, 1.0, 0.32, 0.72), ("end", 1.22, 0.32, 0.72)],
-        caption=("him every time it rains", "\U0001F327"),
+        caption=("Amigo when another cat visits", "\U0001F63E"),
         cap_at=0.0,
         trans_out="zoom",
     ),
@@ -62,7 +64,7 @@ SHOTS = [
             ("end", 1.75, 0.45, 0.51),
         ],
         punch="p1",
-        caption=("and somehow it's my fault", "\U0001F612"),
+        caption=("did you invite him??", "\U0001F612"),
         cap_at="p1",
         trans_out="whip",
     ),
@@ -70,7 +72,7 @@ SHOTS = [
         clip="0912a",
         pieces=[(3.0, 4.0, 2.5), (4.0, 5.8, 0.55)],
         keys=[(0, 1.28, 0.42, 0.42), ("p1", 1.10, 0.42, 0.40), ("end", 1.40, 0.41, 0.40)],
-        caption=("checking if it stopped yet", None),
+        caption=("is he gone yet", None),
         cap_at="p1",
         trans_out="zoom",
     ),
@@ -79,7 +81,7 @@ SHOTS = [
         pieces=[(3.5, 4.3, 1.0), (4.3, 6.4, 0.7)],
         keys=[(0, 1.05, 0.45, 0.50), ("end", 1.38, 0.40, 0.53)],
         letterbox=True,
-        caption=("accepting his fate", None),
+        caption=("this is MY balcony", None),
         cap_at="p1-0.2",
         trans_out="whip",
     ),
@@ -87,7 +89,7 @@ SHOTS = [
         clip="0912c",
         pieces=[(3.2, 5.0, 3.0), (5.0, 6.42, 0.55)],
         keys=[(0, 1.22, 0.50, 0.50), ("p1", 1.16, 0.40, 0.50), ("end", 1.0, 0.40, 0.50)],
-        caption=("ok fine. pets instead", "\U0001F9E1"),
+        caption=("only i get pets here", "\U0001F9E1"),
         cap_at="p1+1.2",
         trans_out=None,
     ),
